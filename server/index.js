@@ -1,11 +1,11 @@
-import express from "express";
-import * as dotenv from "dotenv";
-import cors from "cors";
+const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
 
-import connectDb from "./mongodb/dbConn.js";
+const connectDb = require("./mongodb/dbConn.js");
 
-import postRoutes from "./routes/postRoutes.js"
-import dalleRoutes from "./routes/dalleRoutes.js"
+const postRoutes = require("./routes/postRoutes.js")
+const dalleRoutes = require("./routes/dalleRoutes.js")
 
 dotenv.config();
 
@@ -31,4 +31,4 @@ const startServer = async () => {
 
 startServer();
 
-export default app;
+module.exports = app;

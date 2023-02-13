@@ -1,7 +1,7 @@
-import express from "express";
-import { v2 as cloudinary } from "cloudinary";
-import * as dotenv from "dotenv";
-import Post from "../mongodb/models/post.js";
+const express =  require("express");
+const cloudinary =  require("cloudinary");
+const dotenv =  require("dotenv");
+const Post = require("../mongodb/models/post.js");
 
 dotenv.config();
 const router = express.Router();
@@ -25,7 +25,7 @@ router.route('/').get(async(req, res)=> {
 router.route('/').post(async (req, res)=> {
     try {
         const { name, prompt, photo} = req.body.form;
-        const photoUrl = await cloudinary.uploader.upload(photo);
+        const photoUrl = await cloudinary.v2.uploader.upload(photo);
 
         const newPost = await Post.create({
             name,
@@ -39,4 +39,4 @@ router.route('/').post(async (req, res)=> {
     }
 })
 
-export default router;
+module.exports = router;
